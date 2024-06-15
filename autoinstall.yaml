@@ -3,23 +3,25 @@ autoinstall:
   identity:
     hostname: ubuntu
     username: ubuntu
-    password: "$6$ZE4WV3QRJhPUnsNv$BpkTBYjUOxOiWV5sNPYDSitTwxW.3NHLmhRqptzpa8a4KTxGpkvMaSDbyq4PVri9kdpD1t7ldUBgwB6uveObg."
+    # SHA512 encrypted password (ubuntu)
+    password: "ubuntu."
   storage:
     layout:
       name: lvm
-  snaps:
-    - name: 
-      classic: 
-    - name: 
-      classic: 
-    - name: 
-      classic: 
-    - name: 
-      classic: 
+#  snaps:
+#    - name: 
+#      classic: 
+#    - name: 
+#      classic: 
+#    - name: 
+#      classic: 
+#    - name: 
+#      classic: 
   packages:
-    - 
+    - duf
+    - lm-sensors
   late-commands:
     - curtin in-target -- wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     - curtin in-target -- dpkg -i ./google-chrome-stable_current_amd64.deb
     - curtin in-target -- apt update
-    - curtin in-target -- apt install google-chrome-stable -y
+    - curtin in-target -- apt install google-chrome-beta google-chrome-unstable -y
