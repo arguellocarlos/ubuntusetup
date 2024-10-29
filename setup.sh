@@ -102,6 +102,11 @@ Pin-Priority: -1" | sudo tee /etc/apt/preferences.d/mozilla
     sudo apt install firefox -y
 }
 
+install_libreoffice(){
+    echo "Installing LibreOffice (Flathub)"
+    flatpak install flathub org.libreoffice.LibreOffice -y
+}
+
 install_thunderbird(){
     echo "Installing Thunderbird (Flathub)"
     sudo apt install flatpak gnome-software-plugin-flatpak -y
@@ -187,6 +192,15 @@ if [ "$install_firefox_choice" == "yes" ]; then
     install_firefox
 else
     echo "Skipping Firefox installation."
+fi
+
+# LibreOffice installation (Flathub)
+echo "Do you want to install LibreOffice? (yes/no)"
+read install_libreoffice_choice
+if [ "$install_thunderbird_choice" == "yes" ]; then
+    install_libreoffice
+else
+    echo "Skipping LibreOffice (Flathub) installation"
 fi
 
 # Thunderbird installation (Flathub)
