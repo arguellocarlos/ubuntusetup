@@ -93,9 +93,10 @@ install_firefox(){
 
     Package: firefox*
     Pin: release o=Ubuntu
-    Pin-Priority: -1' | sudo tee /etc/apt/preferences.d/mozilla"
+    Pin-Priority: -1'" | sudo tee /etc/apt/preferences.d/mozilla
+    
     sudo apt update -y
-    sudo apt install firefox
+    sudo apt install firefox -y
 }
 
 # Check Ubuntu version
