@@ -2,7 +2,7 @@
 users:
   - name: ubuntu
     ssh-authorized-keys:
-      - ssh-rsa AAAABAAAAAAAAAAAAAAAAAAAAAAAA...your-public-key...
+      - ssh-rsa AAAAAAAAAAAAAAAAAAAAAAAAAAAAA...your-public-key...
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
     groups: sudo
     shell: /bin/bash
