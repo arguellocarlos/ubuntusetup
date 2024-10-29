@@ -69,10 +69,12 @@ remove_snaps() {
     sudo snap remove --purge snapd
 
     # Disable Snapd service
+    echo "Disabling Snap services..."
     sudo systemctl stop snapd
     sudo systemctl disable snapd
     sudo systemctl mask snapd
     
+    echo "Removing Snap apt package..."
     sudo apt remove --purge snapd -y && sudo apt-mark hold snapd
     
     rm -rf ~/snap/
@@ -83,6 +85,7 @@ remove_snaps() {
 # Function to install Applications * (Without Snap support)
 
 install_firefox(){
+    echo "Installing Firefox (Without Snap)..."
     sudo install -d -m 0755 /etc/apt/keyrings
     wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
     echo ""deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main"" | sudo tee -a /etc/apt/sources.list.d/mozilla.list > /dev/null
