@@ -92,6 +92,15 @@ remove_snaps() {
     sudo rm -rf /var/lib/snapd
 }
 
+# Function to install Parsec
+install_parsec(){
+    echo "Installing Parsec..."
+    wget --show-progress https://builds.parsec.app/package/parsec-linux.deb
+    sudo dpkg -i parsec-linux.deb
+    sudo apt install -f
+}
+
+
 # Function to install Applications * (Without Snap support)
 
 install_firefox(){
@@ -193,6 +202,14 @@ if [ "$install_obstudio_choice" == "yes" ]; then
     install_obstudio
 else
     echo "Skipping OBS Studio installation."
+fi
+
+echo "Do you want to install Parsec? (yes/no)"
+read install_parsec_choice
+if [ "$install_obstudio_parsec" == "yes" ]; then
+    install_parsec
+else
+    echo "Skipping Parsec installation."
 fi
 
 # Snap removal if running on Ubuntu 24.04 and 24.10
