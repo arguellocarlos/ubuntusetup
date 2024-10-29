@@ -172,7 +172,7 @@ fi
 # Firefox installation without Snap Support
 echo "Do you want to install Firefox? (yes/no)"
 read install_firefox_choice
-if ["$install_firefox_choice" == "yes" ]; then
+if [ "$install_firefox_choice" == "yes" ]; then
     install_firefox
 else
     echo "Skipping Firefox installation."
