@@ -80,7 +80,7 @@ remove_snaps() {
     sudo rm -rf /var/lib/snapd
 }
 
-# Function to install Firefox (Without Snap support)
+# Function to install Applications * (Without Snap support)
 
 install_firefox(){
     sudo install -d -m 0755 /etc/apt/keyrings
@@ -97,6 +97,13 @@ Pin-Priority: -1" | sudo tee /etc/apt/preferences.d/mozilla
     
     sudo apt update -y
     sudo apt install firefox -y
+}
+
+install_thunderbird(){
+    echo "Installing Thunderbird (Flathub)"
+    sudo apt install flatpak gnome-software-plugin-flatpak -y
+    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+    flatpak install flathub org.mozilla.Thunderbird
 }
 
 # Check Ubuntu version
@@ -177,6 +184,15 @@ if [ "$install_firefox_choice" == "yes" ]; then
     install_firefox
 else
     echo "Skipping Firefox installation."
+fi
+
+# Thunderbird installation (Flathub)
+echo "Do you want to install Thunderbird? (yes/no)"
+read install_thunderbird_choice
+if [ "$install_thunderbird_choice" == "yes" ]; then
+    install_thunderbird
+else
+    echo "Skipping Thunderbird (Flathub) installation."
 fi
 
 echo "Installation process completed."
