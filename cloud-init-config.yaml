@@ -1,3 +1,36 @@
+# Set Up SSH Keys on Ubuntu
+# The chances are that you already have an SSH key pair on your Ubuntu client machine. 
+# If you generate a new key pair, the old one will be overwritten. 
+# To check whether the key files exist, run the following ls command:
+
+# ls -l ~/.ssh/id_*.pub
+
+# If the command returns something like No such file or directory, or no matches found, 
+# it means that the user does not have SSH keys, 
+# and you can proceed with the next step and generate SSH key pair.
+
+# To generate a new 4096 bits SSH key pair with your email address as a comment, run:
+
+# ssh-keygen -t rsa -b 4096 -C "your_email@domain.com"
+
+# You will be prompted to specify the file name:
+
+# Enter file in which to save the key (/home/yourusername/.ssh/id_rsa):
+
+# The default location and file name should be fine for most users. Press Enter to accept and continue.
+
+# Next, you’ll be asked to type a secure passphrase. A passphrase adds an extra layer of security. 
+# If you set a passphrase, you’ll be prompted to enter it each time you use the key to login to the remote machine.
+
+# If you don’t want to set a passphrase, press Enter.
+
+# Enter passphrase (empty for no passphrase):
+
+# To verify your new SSH key pair is generated, type:
+# /home/yourusername/.ssh/id_rsa /home/yourusername/.ssh/id_rsa.pub
+
+# https://linuxize.com/post/how-to-set-up-ssh-keys-on-ubuntu-20-04/
+
 #cloud-config
 users:
   - name: ubuntu
@@ -13,3 +46,19 @@ chpasswd:
   expire: False
 
 ssh_pwauth: True
+
+# virt-install \
+#   --name ubuntu-vm \
+#   --ram 2048 \
+#   --vcpus 2 \
+#   --disk path=/var/lib/libvirt/images/ubuntu-vm.qcow2,size=20 \
+#   --os-type linux \
+#   --os-variant ubuntu20.04 \
+#   --network network=default \
+#   --graphics none \
+#   --console pty,target_type=serial \
+#   --location 'http://archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/' \
+#   --extra-args 'console=ttyS0,115200n8 serial' \
+#   --disk path=cloud-init.iso,device=cdrom
+
+# Source 'http://archive.ubuntu.com/ubuntu/dists/'
