@@ -53,7 +53,7 @@ install_obstudio(){
 }
 
 # Function to remove Snap Packages
-remove_snap() {
+remove_snaps() {
     echo "Removing Snap Packages..."
     sudo snap remove --purge desktop-security-center
     sudo snap remove --purge firefox
@@ -129,6 +129,17 @@ if [ "$install_obstudio_choice" == "yes" ]; then
     install_obstudio
 else
     echo "Skipping OBS Studio installation."
+fi
+
+# Prompt for Snap removal if running on Ubuntu 24.04 and 24.10
+if [ "$ubuntu_version" == "24.04" ] || [ "$ubuntu_version" == "24.10" ]; then
+    echo "Do you want to remove Snap support? (yes/no)"
+    read remove_snap_choice
+    if [ "$remove_snap_choice" == "yes" ]; then
+        remove_snaps
+    else
+        echo "Skipping Snap packages removal."
+    fi
 fi
 
 echo "Installation process completed."
