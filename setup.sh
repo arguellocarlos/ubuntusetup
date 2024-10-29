@@ -68,7 +68,34 @@ remove_snaps() {
     sudo snap remove --purge core22
     sudo snap remove --purge snapd
 
+    # Disable Snapd service
+    sudo systemctl stop snapd
+    sudo systemctl disable snapd
+    sudo systemctl mask snapd
+    
     sudo apt remove --purge snapd -y && sudo apt-mark hold snapd
+    
+    rm -rf ~/snap/
+    sudo rm -rf /var/snap
+    sudo rm -rf /var/lib/snapd
+}
+
+# Function to install Firefox (Without Snap support)
+
+install_firefox(){
+    sudo install -d -m 0755 /etc/apt/keyrings
+    wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
+    echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" | sudo tee -a /etc/apt/sources.list.d/mozilla.list > /dev/null
+    echo '
+    Package: *
+    Pin: origin packages.mozilla.org
+    Pin-Priority: 1000
+
+    Package: firefox*
+    Pin: release o=Ubuntu
+    Pin-Priority: -1' | sudo tee /etc/apt/preferences.d/mozilla
+    sudo apt update -y
+    sudo apt install firefox
 }
 
 # Check Ubuntu version
@@ -140,6 +167,15 @@ if [ "$ubuntu_version" == "24.04" ] || [ "$ubuntu_version" == "24.10" ]; then
     else
         echo "Skipping Snap packages removal."
     fi
+fi
+
+# Firefox installation without Snap Support
+echo "Do you want to install Firefox? (yes/no)"
+read install_firefox_choice
+if ["$install_firefox_choice" == "yes" ]; then
+    install_firefox
+else
+    echo "Skipping Firefox installation."
 fi
 
 echo "Installation process completed."
