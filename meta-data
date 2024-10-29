@@ -1,2 +1,2 @@
 instance-id: iid-local01
-local-hostname: cloudimg
+local-hostname: ubuntu-cloudimg
