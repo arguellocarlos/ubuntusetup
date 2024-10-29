@@ -51,7 +51,7 @@ runcmd:
   - add-apt-repository ppa:kisak/kisak-mesa -y
   - apt-get update -y
   - apt-get upgrade -y
-  - apt-get install screenfetch -y
+  - apt-get install git htop screenfetch -y
 
 ssh_pwauth: True
 
