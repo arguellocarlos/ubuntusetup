@@ -197,7 +197,7 @@ fi
 # LibreOffice installation (Flathub)
 echo "Do you want to install LibreOffice? (yes/no)"
 read install_libreoffice_choice
-if [ "$install_thunderbird_choice" == "yes" ]; then
+if [ "$install_libreoffice_choice" == "yes" ]; then
     install_libreoffice
 else
     echo "Skipping LibreOffice (Flathub) installation"
