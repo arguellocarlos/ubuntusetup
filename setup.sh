@@ -131,7 +131,7 @@ else
     echo "Skipping OBS Studio installation."
 fi
 
-# Prompt for Snap removal if running on Ubuntu 24.04 and 24.10
+# Snap removal if running on Ubuntu 24.04 and 24.10
 if [ "$ubuntu_version" == "24.04" ] || [ "$ubuntu_version" == "24.10" ]; then
     echo "Do you want to remove Snap packages support? (yes/no)"
     read remove_snap_choice
