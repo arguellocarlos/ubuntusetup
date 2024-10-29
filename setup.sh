@@ -5,7 +5,7 @@ install_bitwarden() {
     echo "Installing the latest Bitwarden Desktop version..."
     latest_release=$(curl -s https://api.github.com/repos/bitwarden/clients/releases/latest | grep browser_download_url | grep amd64.deb | cut -d '"' -f 4)
     wget -O bitwarden-latest-amd64.deb $latest_release
-    sudo dpkg -i bitwarden-latest-amd64.deb
+    sudo apt install ./bitwarden-latest-amd64.deb
     sudo apt install -f
     rm bitwarden-latest-amd64.deb
 }
