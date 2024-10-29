@@ -76,12 +76,12 @@ ubuntu_version=$(lsb_release -rs)
 
 if [ "$ubuntu_version" == "24.04" ]; then
     echo "Running on Ubuntu 24.04."
-    echo "Do you want to remove Thunderbird? (yes/no)"
-    read remove_thunderbird_choice
-    if [ "$remove_thunderbird_choice" == "yes" ]; then
-        remove_thunderbird
+    echo "Do you want to remove Snap Support? (yes/no)"
+    read remove_snap_choice
+    if [ "$remove_snap_choice" == "yes" ]; then
+        remove_snap
     else
-        echo "Skipping Thunderbird removal."
+        echo "Skipping Snap removal."
     fi
 elif [ "$ubuntu_version" == "24.04" ] || [ "$ubuntu_version" == "24.10" ]; then
     echo "Running on Ubuntu $ubuntu_version."
