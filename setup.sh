@@ -36,6 +36,22 @@ install_chrome() {
     sudo apt install google-chrome-stable -y
 }
 
+# Function to install Kisak Mesa Fresh
+install_kisakmesa(){
+    echo "Installing Kisak Mesa Fresh PPA..."
+    sudo add-apt-repository ppa:kisak/kisak-mesa -y
+    sudo apt update -y
+    sudo apt upgrade -y
+}
+
+# Function to install OBS Studio
+install_obstudio(){
+    echo "Installing OBS Studio..."
+    sudo add-apt-repository ppa:obsproject/obs-studio -y
+    sudo apt update -y
+    sudo apt install ffmpeg obs-studio -y
+}
+
 # Prompt user for each installation
 echo "Do you want to install Brave browser? (yes/no)"
 read install_brave_choice
@@ -44,8 +60,6 @@ if [ "$install_brave_choice" == "yes" ]; then
 else
     echo "Skipping Brave browser installation."
 fi
-
-echo "Installation process completed."
 
 echo "Do you want to install Docker? (yes/no)"
 read install_docker_choice
@@ -62,3 +76,21 @@ if [ "$install_chrome_choice" == "yes" ]; then
 else
     echo "Skipping Google Chrome installation."
 fi
+
+echo "Do you want to install Kisak Mesa Fresh? (yes/no)"
+read install_kisakmesa_choice
+if [ "$install_kisakmesa_choice" == "yes" ]; then
+    install_kisakmesa
+else
+    echo "Skipping Kisak Mesa Fresh installation."
+fi
+
+echo "Do you want to install OBS Studio? (yes/no)"
+read install_obstudio_choice
+if [ "$install_obstudio_choice" == "yes" ]; then
+    install_obstudio
+else
+    echo "Skipping OBS Studio installation."
+fi
+
+echo "Installation process completed."
