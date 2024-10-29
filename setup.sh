@@ -79,7 +79,7 @@ if [ "$ubuntu_version" == "24.04" ]; then
     echo "Do you want to remove Snap Support? (yes/no)"
     read remove_snap_choice
     if [ "$remove_snap_choice" == "yes" ]; then
-        remove_snap
+        remove_snaps
     else
         echo "Skipping Snap removal."
     fi
@@ -133,7 +133,7 @@ fi
 
 # Prompt for Snap removal if running on Ubuntu 24.04 and 24.10
 if [ "$ubuntu_version" == "24.04" ] || [ "$ubuntu_version" == "24.10" ]; then
-    echo "Do you want to remove Snap support? (yes/no)"
+    echo "Do you want to remove Snap packages support? (yes/no)"
     read remove_snap_choice
     if [ "$remove_snap_choice" == "yes" ]; then
         remove_snaps
