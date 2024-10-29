@@ -206,7 +206,7 @@ fi
 
 echo "Do you want to install Parsec? (yes/no)"
 read install_parsec_choice
-if [ "$install_obstudio_parsec" == "yes" ]; then
+if [ "$install_parsec_choice" == "yes" ]; then
     install_parsec
 else
     echo "Skipping Parsec installation."
