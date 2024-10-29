@@ -114,12 +114,14 @@ Pin-Priority: -1" | sudo tee /etc/apt/preferences.d/mozilla
 
 install_libreoffice(){
     echo "Installing LibreOffice (Flathub)"
+    sudo apt install flatpak -y
+    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
     flatpak install flathub org.libreoffice.LibreOffice -y
 }
 
 install_thunderbird(){
     echo "Installing Thunderbird (Flathub)"
-    sudo apt install flatpak gnome-software-plugin-flatpak -y
+    sudo apt install flatpak -y
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
     flatpak install flathub org.mozilla.Thunderbird -y
 }
