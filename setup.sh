@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Function to install Bitwarden
-install_bitwarden() {
-    echo "Installing the latest Bitwarden Desktop version..."
-    latest_release=$(curl -s https://api.github.com/repos/bitwarden/clients/releases/latest | grep browser_download_url | grep amd64.deb | cut -d '"' -f 4)
-    wget -O bitwarden-latest-amd64.deb $latest_release
-    sudo apt install ./bitwarden-latest-amd64.deb
-    sudo apt install -f
-    rm bitwarden-latest-amd64.deb
-}
+#install_bitwarden() {
+#    echo "Installing the latest Bitwarden Desktop version..."
+#    latest_release=$(curl -s https://api.github.com/repos/bitwarden/clients/releases/latest | grep browser_download_url | grep amd64.deb | cut -d '"' -f 4)
+#    wget -O bitwarden-latest-amd64.deb $latest_release
+#    sudo apt install ./bitwarden-latest-amd64.deb
+#    sudo apt install -f
+#    rm bitwarden-latest-amd64.deb
+#}
 
 # Function to install Brave browser
 install_brave() {
@@ -145,13 +145,13 @@ fi
 
 # Prompt user for each installation
 
-echo "Do you want to install the latest Bitwarden Desktop version? (yes/no)"
-read install_bitwarden_choice
-if [ "$install_bitwarden_choice" == "yes" ]; then
-    install_bitwarden
-else
-    echo "Skipping Bitwarden installation."
-fi
+#echo "Do you want to install the latest Bitwarden Desktop version? (yes/no)"
+#read install_bitwarden_choice
+#if [ "$install_bitwarden_choice" == "yes" ]; then
+#    install_bitwarden
+#else
+#    echo "Skipping Bitwarden installation."
+#fi
 
 echo "Do you want to install Brave browser? (yes/no)"
 read install_brave_choice
