@@ -100,6 +100,14 @@ install_parsec(){
     sudo apt install -f
 }
 
+# Function to install AnyDesk
+install_anydesk(){
+    echo "Installing AnyDesk..."
+    wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | apt-key add -
+    echo "deb http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk-stable.list
+    sudo apt update -y
+    sudo apt install anydesk -y
+}
 
 # Function to install Applications * (Without Snap support)
 
@@ -210,6 +218,14 @@ if [ "$install_parsec_choice" == "yes" ]; then
     install_parsec
 else
     echo "Skipping Parsec installation."
+fi
+
+echo "Do you want to install AnyDesk? (yes/no)"
+read install_anydesk_choice
+if [ "$install_anydesk_choice" == "yes" ]; then
+    install_anydesk
+else
+    echo "Skipping AnyDesk installation."
 fi
 
 # Snap removal if running on Ubuntu 24.04 and 24.10
