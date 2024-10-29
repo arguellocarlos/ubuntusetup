@@ -106,7 +106,7 @@ install_thunderbird(){
     echo "Installing Thunderbird (Flathub)"
     sudo apt install flatpak gnome-software-plugin-flatpak -y
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-    flatpak install flathub org.mozilla.Thunderbird
+    flatpak install flathub org.mozilla.Thunderbird -y
 }
 
 # Check Ubuntu version
