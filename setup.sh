@@ -52,6 +52,44 @@ install_obstudio(){
     sudo apt install ffmpeg obs-studio -y
 }
 
+# Function to remove Snap Packages
+remove_snap() {
+    echo "Removing Snap Packages..."
+    sudo snap remove --purge desktop-security-center
+    sudo snap remove --purge firefox
+    sudo snap remove --purge firmware-updater
+    sudo snap remove --purge gnome-42-2204
+    sudo snap remove --purge gtk-common-themes
+    sudo snap remove --purge prompting-client
+    sudo snap remove --purge snap-store
+    sudo snap remove --purge snapd-desktop-integration
+
+    sudo snap remove --purge bare
+    sudo snap remove --purge core22
+    sudo snap remove --purge snapd
+
+    sudo apt remove --purge snapd -y && sudo apt-mark hold snapd
+}
+
+# Check Ubuntu version
+ubuntu_version=$(lsb_release -rs)
+
+if [ "$ubuntu_version" == "24.04" ]; then
+    echo "Running on Ubuntu 24.04."
+    echo "Do you want to remove Thunderbird? (yes/no)"
+    read remove_thunderbird_choice
+    if [ "$remove_thunderbird_choice" == "yes" ]; then
+        remove_thunderbird
+    else
+        echo "Skipping Thunderbird removal."
+    fi
+elif [ "$ubuntu_version" == "24.04" ] || [ "$ubuntu_version" == "24.10" ]; then
+    echo "Running on Ubuntu $ubuntu_version."
+else
+    echo "This script is designed for Ubuntu 24.04 or 24.10. Exiting."
+    exit 1
+fi
+
 # Prompt user for each installation
 echo "Do you want to install Brave browser? (yes/no)"
 read install_brave_choice
