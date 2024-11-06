@@ -55,7 +55,7 @@ install_chrome() {
 
 # Function to install Kisak Mesa Fresh
 install_kisakmesa(){
-    echo "${UFO_Green}Installing Kisak Mesa Fresh PPA...${NC}"
+    echo -e "${UFO_Green}Installing Kisak Mesa Fresh PPA...${NC}"
     sudo add-apt-repository ppa:kisak/kisak-mesa -y
     sudo apt update -y
     sudo apt upgrade -y
@@ -91,7 +91,7 @@ remove_snaps() {
     sudo systemctl disable snapd
     sudo systemctl mask snapd
     
-    echo "Removing Snap apt package..."
+    echo -e "${UFO_Green}Removing Snap apt package...${NC}"
     sudo apt remove --purge snapd -y && sudo apt-mark hold snapd
     
     rm -rf ~/snap/
@@ -101,7 +101,7 @@ remove_snaps() {
 
 # Function to install Parsec
 install_parsec(){
-    echo "Installing Parsec..."
+    echo -e "${UFO_Green}Installing Parsec...${NC}"
     wget --show-progress https://builds.parsec.app/package/parsec-linux.deb
     sudo dpkg -i parsec-linux.deb
     sudo apt install -f
