@@ -181,18 +181,19 @@ install_firefox_standalone() {
     # Download the latest Firefox release
     curl -O https://ftp.mozilla.org/pub/firefox/releases/132.0.1/linux-x86_64/en-US/firefox-132.0.1.tar.bz2 # Firefox 132.0.1 as of 11/06/2024
     # Unzip the downloaded file
-    tar xjf firefox-*.tar.bz2
+    sudo apt install --reinstall bzip2 -y
+    tar -xjf firefox-132.0.1.tar.bz2
     # Move the firefox folder content to the installation directory
-    sudo mv firefox* /opt
+    sudo mv firefox/ /opt/
     # Set the appropriate permissions
     sudo chown root:root /opt/firefox
     sudo chmod 755 /opt/firefox
     # Clean up the downloaded and unzipped files
     cd ..
-    rm -rf firefox-* firefox-132.0.1.tar.bz2
+    rm -rf firefox-132.0.1.tar.bz2
     # Create a symbolic link to make Firefox accessible from anywhere
-    sudo ln -s /opt/firefox /usr/bin/firefox
-    wget https://raw.githubusercontent.com/arguellocarlos/ubuntusetup/refs/heads/main/firefox-stable.desktop && sudo mv firefox-stable.desktop /usr/share/applications/
+    sudo ln -s /opt/firefox/firefox /usr/bin/firefox
+    wget https://raw.githubusercontent.com/arguellocarlos/ubuntusetup/refs/heads/main/firefox-stable.desktop && sudo cp -r firefox-stable.desktop /usr/share/applications/
 }
 
 install_libreoffice() {
