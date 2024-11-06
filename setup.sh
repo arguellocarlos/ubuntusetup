@@ -116,10 +116,10 @@ install_anydesk(){
     sudo apt install anydesk -y
 }
 
-# Function to install Applications * (Without Snap support)
+# Function to install Applications (Without Snap support)
 
 install_firefox(){
-    echo "${UFO_Green}Installing Firefox (Without Snap)...${NC}"
+    echo -e "${UFO_Green}Installing Firefox (Without Snap)...${NC}"
     sudo install -d -m 0755 /etc/apt/keyrings
     wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
     echo ""deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main"" | sudo tee -a /etc/apt/sources.list.d/mozilla.list > /dev/null
@@ -137,14 +137,14 @@ Pin-Priority: -1" | sudo tee /etc/apt/preferences.d/mozilla
 }
 
 install_libreoffice(){
-    echo "${UFO_Green}Installing LibreOffice (Flathub)${NC}"
+    echo -e "${UFO_Green}Installing LibreOffice (Flathub)${NC}"
     sudo apt install flatpak -y
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
     flatpak install flathub org.libreoffice.LibreOffice -y
 }
 
 install_thunderbird(){
-    echo "${UFO_Green}Installing Thunderbird (Flathub)${NC}"
+    echo -e "${UFO_Green}Installing Thunderbird (Flathub)${NC}"
     sudo apt install flatpak -y
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
     flatpak install flathub org.mozilla.Thunderbird -y
