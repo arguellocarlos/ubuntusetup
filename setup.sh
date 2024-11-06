@@ -154,7 +154,7 @@ install_rclone(){
     sudo ln -s $INSTALL_DIR/rclone /usr/bin/rclone
     # Verify the installation
     rclone version
-    echo "${UFO_Green}rclone has been installed to $INSTALL_DIR and linked to /usr/bin/rclone${NC}"
+    echo -e "${UFO_Green}rclone has been installed to $INSTALL_DIR and linked to /usr/bin/rclone${NC}"
 }
 
 # Function to install Applications (Without Snap support)
@@ -264,7 +264,7 @@ read install_parsec_choice
 if [ "$install_parsec_choice" == "yes" ]; then
     install_parsec
 else
-    echo -e "Skipping Parsec installation.${NC}"
+    echo -e "${UFO_Green}Skipping Parsec installation.${NC}"
 fi
 
 echo -e "${UFO_Green}Do you want to install AnyDesk? (yes/no)${NC}"
