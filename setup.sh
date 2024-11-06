@@ -286,7 +286,6 @@ else
     echo -e "${UFO_Green}Skipping Thunderbird (Flathub) installation.${NC}"
 fi
 
-# Display ASCII art
 # display_ascii_art
 
 echo -e "${UFO_Green}Installation process completed.${NC}"

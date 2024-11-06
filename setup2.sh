@@ -11,7 +11,7 @@ display_ascii_art() {
 install_applications() {
     echo "Run setup.sh (Install various applications)"
     chmod a+x setup.sh
-    sudo sh ./setup.sh
+    sudo ./setup.sh
     # Add more applications (Or scripts) as needed
 }
 
@@ -19,7 +19,7 @@ install_applications() {
 perform_system_performance_change() {
     echo "Performing system performance changes..."
     chmod a+x systemperfchange.sh
-    sudo sh ./systemperfchange.sh
+    sudo ./systemperfchange.sh
 }
 
 # Main menu
