@@ -192,7 +192,7 @@ install_firefox_standalone() {
     rm -rf firefox-* firefox-132.0.1.tar.bz2
     # Create a symbolic link to make Firefox accessible from anywhere
     sudo ln -s /opt/firefox /usr/bin/firefox
-    wget https://raw.githubusercontent.com/arguellocarlos/ubuntusetup/refs/heads/main/firefox-stable.desktop -P /usr/share/applications
+    wget https://raw.githubusercontent.com/arguellocarlos/ubuntusetup/refs/heads/main/firefox-stable.desktop && sudo mv firefox-stable.desktop /usr/share/applications/
 }
 
 install_libreoffice() {
