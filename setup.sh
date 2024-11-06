@@ -119,7 +119,7 @@ install_anydesk(){
 # Function to install Applications * (Without Snap support)
 
 install_firefox(){
-    echo "Installing Firefox (Without Snap)..."
+    echo "${UFO_Green}Installing Firefox (Without Snap)...${NC}"
     sudo install -d -m 0755 /etc/apt/keyrings
     wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
     echo ""deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main"" | sudo tee -a /etc/apt/sources.list.d/mozilla.list > /dev/null
@@ -137,14 +137,14 @@ Pin-Priority: -1" | sudo tee /etc/apt/preferences.d/mozilla
 }
 
 install_libreoffice(){
-    echo "Installing LibreOffice (Flathub)"
+    echo "${UFO_Green}Installing LibreOffice (Flathub)${NC}"
     sudo apt install flatpak -y
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
     flatpak install flathub org.libreoffice.LibreOffice -y
 }
 
 install_thunderbird(){
-    echo "Installing Thunderbird (Flathub)"
+    echo "${UFO_Green}Installing Thunderbird (Flathub)${NC}"
     sudo apt install flatpak -y
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
     flatpak install flathub org.mozilla.Thunderbird -y
@@ -163,9 +163,9 @@ if [ "$ubuntu_version" == "24.04" ]; then
         echo -e "${UFO_Green}Skipping Snap removal.${NC}"
     fi
 elif [ "$ubuntu_version" == "24.04" ] || [ "$ubuntu_version" == "24.10" ]; then
-    echo "Running on Ubuntu $ubuntu_version."
+    echo -e "${UFO_Green}Running on Ubuntu $ubuntu_version.${NC}"
 else
-    echo "This script is designed for Ubuntu 24.04 or 24.10. Exiting."
+    echo -e "${UFO_Green}This script is designed for Ubuntu 24.04 or 24.10. Exiting.${NC}"
     exit 1
 fi
 
@@ -187,90 +187,90 @@ else
     echo -e "${UFO_Green}Skipping Brave browser installation.${NC}"
 fi
 
-echo "Do you want to install Docker? (yes/no)"
+echo -e "${UFO_Green}Do you want to install Docker? (yes/no)${NC}"
 read install_docker_choice
 if [ "$install_docker_choice" == "yes" ]; then
     install_docker
 else
-    echo "Skipping Docker installation."
+    echo -e "${UFO_Green}Skipping Docker installation.${NC}"
 fi
 
-echo "Do you want to install Google Chrome? (yes/no)"
+echo -e "${UFO_Green}Do you want to install Google Chrome? (yes/no)${NC}"
 read install_chrome_choice
 if [ "$install_chrome_choice" == "yes" ]; then
     install_chrome
 else
-    echo "Skipping Google Chrome installation."
+    echo -e "${UFO_Green}Skipping Google Chrome installation.${NC}"
 fi
 
-echo "Do you want to install Kisak Mesa Fresh? (yes/no)"
+echo -e "${UFO_Green} Do you want to install Kisak Mesa Fresh PPA? (yes/no)${NC}"
 read install_kisakmesa_choice
 if [ "$install_kisakmesa_choice" == "yes" ]; then
     install_kisakmesa
 else
-    echo "Skipping Kisak Mesa Fresh installation."
+    echo -e "${UFO_Green}Skipping Kisak Mesa Fresh installation.${NC}"
 fi
 
-echo "Do you want to install OBS Studio? (yes/no)"
+echo -e "${UFO_Green}Do you want to install OBS Studio? (yes/no)${NC}"
 read install_obstudio_choice
 if [ "$install_obstudio_choice" == "yes" ]; then
     install_obstudio
 else
-    echo "Skipping OBS Studio installation."
+    echo -e "${UFO_Green}Skipping OBS Studio installation.${NC}"
 fi
 
-echo "Do you want to install Parsec? (yes/no)"
+echo -e "${UFO_Green}Do you want to install Parsec? (yes/no)${NC}"
 read install_parsec_choice
 if [ "$install_parsec_choice" == "yes" ]; then
     install_parsec
 else
-    echo "Skipping Parsec installation."
+    echo -e "Skipping Parsec installation.${NC}"
 fi
 
-echo "Do you want to install AnyDesk? (yes/no)"
+echo -e "${UFO_Green}Do you want to install AnyDesk? (yes/no)${NC}"
 read install_anydesk_choice
 if [ "$install_anydesk_choice" == "yes" ]; then
     install_anydesk
 else
-    echo "Skipping AnyDesk installation."
+    echo -e "${UFO_Green}Skipping AnyDesk installation.${NC}"
 fi
 
 # Snap removal if running on Ubuntu 24.04 and 24.10
 if [ "$ubuntu_version" == "24.04" ] || [ "$ubuntu_version" == "24.10" ]; then
-    echo "Do you want to remove Snap packages support? (yes/no)"
+    echo -e "${UFO_Green}Do you want to remove Snap packages support? (yes/no)${NC}"
     read remove_snap_choice
     if [ "$remove_snap_choice" == "yes" ]; then
         remove_snaps
     else
-        echo "Skipping Snap packages removal."
+        echo -e "${UFO_Green}Skipping Snap packages removal.${NC}"
     fi
 fi
 
 # Firefox installation without Snap Support
-echo "Do you want to install Firefox? (yes/no)"
+echo -e "${UFO_Green}Do you want to install Firefox? (yes/no)${NC}"
 read install_firefox_choice
 if [ "$install_firefox_choice" == "yes" ]; then
     install_firefox
 else
-    echo "Skipping Firefox installation."
+    echo -e "${UFO_Green}Skipping Firefox installation.${NC}"
 fi
 
 # LibreOffice installation (Flathub)
-echo "Do you want to install LibreOffice? (yes/no)"
+echo -e "${UFO_Green}Do you want to install LibreOffice? (yes/no)${NC}"
 read install_libreoffice_choice
 if [ "$install_libreoffice_choice" == "yes" ]; then
     install_libreoffice
 else
-    echo "Skipping LibreOffice (Flathub) installation"
+    echo -e "${UFO_Green}Skipping LibreOffice (Flathub) installation${NC}"
 fi
 
 # Thunderbird installation (Flathub)
-echo "Do you want to install Thunderbird? (yes/no)"
+echo -e "${UFO_Green}Do you want to install Thunderbird? (yes/no)${NC}"
 read install_thunderbird_choice
 if [ "$install_thunderbird_choice" == "yes" ]; then
     install_thunderbird
 else
-    echo "Skipping Thunderbird (Flathub) installation."
+    echo -e "${UFO_Green}Skipping Thunderbird (Flathub) installation.${NC}"
 fi
 
-echo "Installation process completed."
+echo -e "${UFO_Green}Installation process completed.${NC}"

@@ -1,5 +1,5 @@
 # Copilot Explanation
-Got it! You can use the `cloud-localds` command to create a cloud-init ISO that can be mounted as a CDROM when creating a VM with KVM/QEMU. Here’s how you can do it:
+You can use the `cloud-localds` command to create a cloud-init ISO that can be mounted as a CDROM when creating a VM with KVM/QEMU. Here’s how you can do it:
 
 1. **Create the cloud-init configuration files** (`user-data` and `meta-data`):
    ```yaml
