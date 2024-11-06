@@ -166,7 +166,6 @@ install_thunderbird(){
 
 # Check Ubuntu version
 ubuntu_version=$(lsb_release -rs)
-
 if [ "$ubuntu_version" == "24.04" ]; then
     echo "Running on Ubuntu 24.04."
     echo "Do you want to remove Snap Support? (yes/no)"
