@@ -1,5 +1,26 @@
 #!/bin/bash
 
+# Function to display ASCII art
+display_ascii_art() {
+    echo "=================================="
+    echo "  _    _ _   _ _    _ _   _       "
+    echo " | |  | | | | | |  | | | | |      "
+    echo " | |  | | |_| | |  | | |_| |      "
+    echo " | |  | |  _  | |  | |  _  |      "
+    echo " | |__| | | | | |__| | | | |      "
+    echo "  \\____/|_| |_|\\____/|_| |_|      "
+    echo "                                  "
+    echo "  Ubuntu Post Installation Script "
+    echo "=================================="
+}
+
+# Function to install applications
+install_applications() {
+    echo "Installing applications..."
+    # Add your application installation commands here
+    # sudo apt update
+    # sudo apt install git -y
+
 # Function to install Bitwarden
 install_bitwarden() {
 #    echo "Installing the latest Bitwarden Desktop version..."
@@ -268,5 +289,31 @@ if [ "$install_thunderbird_choice" == "yes" ]; then
 else
     echo "Skipping Thunderbird (Flathub) installation."
 fi
+
+}
+
+# Main menu
+main_menu() {
+    while true; do
+        echo "Please choose an option:"
+        echo "1. Install Applications"
+        # echo "2. Perform System Changes"
+        # echo "3. Exit"
+        read -p "Enter your choice [1-3]: " choice
+
+        case $choice in
+            1) install_applications ;;
+            2) perform_system_changes ;;
+            3) echo "Exiting..."; exit 0 ;;
+            *) echo "Invalid option. Please try again." ;;
+        esac
+    done
+}
+
+# Display ASCII art
+display_ascii_art
+
+# Show the main menu
+main_men
 
 echo "Installation process completed."
