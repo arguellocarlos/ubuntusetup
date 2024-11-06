@@ -167,18 +167,18 @@ install_thunderbird(){
 # Check Ubuntu version
 ubuntu_version=$(lsb_release -rs)
 if [ "$ubuntu_version" == "24.04" ]; then
-    echo "Running on Ubuntu 24.04."
-    echo "Do you want to remove Snap Support? (yes/no)"
+    echo -e "${UFO_Green}Running on Ubuntu 24.04.${NC}"
+    echo -e "${UFO_Green}Do you want to remove Snap Support? (yes/no)${NC}"
     read remove_snap_choice
     if [ "$remove_snap_choice" == "yes" ]; then
         remove_snaps
     else
-        echo "Skipping Snap removal."
+        echo -e "${UFO_Green}Skipping Snap removal.${NC}"
     fi
 elif [ "$ubuntu_version" == "24.04" ] || [ "$ubuntu_version" == "24.10" ]; then
-    echo "Running on Ubuntu $ubuntu_version."
+    echo -e "${UFO_Green}Running on Ubuntu $ubuntu_version.${NC}"
 else
-    echo "This script is designed for Ubuntu 24.04 or 24.10. Exiting."
+    echo -e "${UFO_Green}This script is designed for Ubuntu 24.04 or 24.10. Exiting.${NC}"
     exit 1
 fi
 
