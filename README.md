@@ -42,8 +42,6 @@ You can use the `cloud-localds` command to create a cloud-init ISO that can be m
 
 This method will create a cloud-init ISO that can be used to provide user-data and meta-data to your VM during its creation¹²³.
 
-Let me know if you need any more details or run into any issues!
-
 Source: Conversation with Copilot, 10/29/2024
 
 [(1) cloud-localds (1) — cloud-image-utils — Debian testing — Debian Manpages.](https://manpages.debian.org/testing/cloud-image-utils/cloud-localds.1.en.html.)
