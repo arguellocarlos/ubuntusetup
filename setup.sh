@@ -1,5 +1,19 @@
 #!/bin/bash
 
+# Function to display ASCII art
+display_ascii_art() {
+    echo "=================================="
+    echo "  _    _ _   _ _    _ _   _       "
+    echo " | |  | | | | | |  | | | | |      "
+    echo " | |  | | |_| | |  | | |_| |      "
+    echo " | |  | |  _  | |  | |  _  |      "
+    echo " | |__| | | | | |__| | | | |      "
+    echo "  \\____/|_| |_|\\____/|_| |_|      "
+    echo "                                  "
+    echo "  Ubuntu Post Installation Script "
+    echo "=================================="
+}
+
 # Define global color variable
 UFO_Green='\033[1;38;5;78m' # Bold UFO Green https://www.colorxs.com/color/hex-33da7a
 NC='\033[1;37m' # Default white
@@ -272,5 +286,8 @@ if [ "$install_thunderbird_choice" == "yes" ]; then
 else
     echo -e "${UFO_Green}Skipping Thunderbird (Flathub) installation.${NC}"
 fi
+
+# Display ASCII art
+display_ascii_art
 
 echo -e "${UFO_Green}Installation process completed.${NC}"
