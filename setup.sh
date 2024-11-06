@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Define global color variables
-UFO_Green='\033[0;38;5;78m' # UFO Green https://www.colorxs.com/color/hex-33da7a
-NC='\033[0m' # No Color
+# Define global color variable
+UFO_Green='\033[1;38;5;78m' # Bold UFO Green https://www.colorxs.com/color/hex-33da7a
+NC='\033[1;37m' # Default white
 
 # Function to install Bitwarden
 install_bitwarden() {
@@ -29,7 +29,7 @@ install_brave() {
 
 # Function to install Docker
 install_docker() {
-    echo "Installing Docker..."
+    echo -e "${UFO_Green}Installing Docker...${NC}"
     sudo apt update -y
     sudo apt install ca-certificates curl -y
     sudo install -m 0755 -d /etc/apt/keyrings
@@ -46,7 +46,7 @@ install_docker() {
 
 # Function to install Google Chrome
 install_chrome() {
-    echo "Installing Google Chrome..."
+    echo -e "${UFO_Green}Installing Google Chrome...${NC}"
     wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
     sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
     sudo apt update -y
@@ -63,7 +63,7 @@ install_kisakmesa(){
 
 # Function to install OBS Studio
 install_obstudio(){
-    echo "Installing OBS Studio..."
+    echo -e "${UFO_Green}Installing OBS Studio...${NC}"
     sudo add-apt-repository ppa:obsproject/obs-studio -y
     sudo apt update -y
     sudo apt install ffmpeg obs-studio -y
@@ -71,7 +71,7 @@ install_obstudio(){
 
 # Function to remove Snap Packages
 remove_snaps() {
-    echo "Removing Snap Packages..."
+    echo -e "${UFO_Green}Removing Snap Packages...${NC}"
     sudo snap remove --purge desktop-security-center
     sudo snap remove --purge firefox
     sudo snap remove --purge firmware-updater
@@ -86,7 +86,7 @@ remove_snaps() {
     sudo snap remove --purge snapd
 
     # Disable Snapd service
-    echo "Disabling Snap services..."
+    echo -e "${UFO_Green}Disabling Snap services...${NC}"
     sudo systemctl stop snapd
     sudo systemctl disable snapd
     sudo systemctl mask snapd
@@ -109,7 +109,7 @@ install_parsec(){
 
 # Function to install AnyDesk
 install_anydesk(){
-    echo "Installing AnyDesk..."
+    echo -e "${UFO_Green}Installing AnyDesk...${NC}"
     wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | apt-key add -
     echo "deb http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk-stable.list
     sudo apt update -y
@@ -154,13 +154,13 @@ install_thunderbird(){
 ubuntu_version=$(lsb_release -rs)
 
 if [ "$ubuntu_version" == "24.04" ]; then
-    echo "Running on Ubuntu 24.04."
-    echo "Do you want to remove Snap Support? (yes/no)"
+    echo -e "${UFO_Green}Running on Ubuntu 24.04.${NC}"
+    echo -e "${UFO_Green}Do you want to remove Snap Support? (yes/no)${NC}"
     read remove_snap_choice
     if [ "$remove_snap_choice" == "yes" ]; then
         remove_snaps
     else
-        echo "Skipping Snap removal."
+        echo -e "${UFO_Green}Skipping Snap removal.${NC}"
     fi
 elif [ "$ubuntu_version" == "24.04" ] || [ "$ubuntu_version" == "24.10" ]; then
     echo "Running on Ubuntu $ubuntu_version."
@@ -171,20 +171,20 @@ fi
 
 # Prompt user for each installation
 
-echo "Do you want to install the latest Bitwarden Desktop version? (yes/no)"
+echo -e "${UFO_Green}Do you want to install the latest Bitwarden Desktop version? (yes/no)${NC}"
 read install_bitwarden_choice
 if [ "$install_bitwarden_choice" == "yes" ]; then
     install_bitwarden
 else
-    echo "Skipping Bitwarden installation."
+    echo -e "${UFO_Green}Skipping Bitwarden installation.${NC}"
 fi
 
-echo "Do you want to install Brave browser? (yes/no)"
+echo -e "${UFO_Green}Do you want to install Brave browser? (yes/no)${NC}"
 read install_brave_choice
 if [ "$install_brave_choice" == "yes" ]; then
     install_brave
 else
-    echo "Skipping Brave browser installation."
+    echo -e "${UFO_Green}Skipping Brave browser installation.${NC}"
 fi
 
 echo "Do you want to install Docker? (yes/no)"
