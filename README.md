@@ -46,7 +46,7 @@ Source: Conversation with Copilot, 10/29/2024
 
 [(1) cloud-localds (1) — cloud-image-utils — Debian testing — Debian Manpages.](https://manpages.debian.org/testing/cloud-image-utils/cloud-localds.1.en.html.)
 
-[(2) # Using Generic Cloud Images on a local machine - AlmaLinux OS.](https://wiki.almalinux.org/cloud/Generic-cloud-on-local.html.)
+[(2) Using Generic Cloud Images on a local machine - AlmaLinux OS.](https://wiki.almalinux.org/cloud/Generic-cloud-on-local.html.)
 
 [(3) Create and use a local cloud-init datasource.](https://documentation.ubuntu.com/public-images/en/latest/public-images-how-to/use-local-cloud-init-ds/.)
 
