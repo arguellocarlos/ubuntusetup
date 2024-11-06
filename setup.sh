@@ -130,6 +130,33 @@ install_anydesk(){
     sudo apt install anydesk -y
 }
 
+install_rclone(){
+    sudo apt install p7zip-full unzip -y
+    # Define the installation directory
+    INSTALL_DIR="/opt/rclone"
+    # Create the installation directory
+    sudo mkdir -p $INSTALL_DIR
+    # Download the latest rclone release
+    curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
+    # Unzip the downloaded file
+    unzip rclone-current-linux-amd64.zip
+    # Change to the unzipped directory
+    cd rclone-*-linux-amd64
+    # Move the rclone binary to the installation directory
+    sudo mv rclone $INSTALL_DIR
+    # Set the appropriate permissions
+    sudo chown root:root $INSTALL_DIR/rclone
+    sudo chmod 755 $INSTALL_DIR/rclone
+    # Clean up the downloaded and unzipped files
+    cd ..
+    rm -rf rclone-*-linux-amd64 rclone-current-linux-amd64.zip
+    # Create a symbolic link to make rclone accessible from anywhere
+    sudo ln -s $INSTALL_DIR/rclone /usr/bin/rclone
+    # Verify the installation
+    rclone version
+    echo "${UFO_Green}rclone has been installed to $INSTALL_DIR and linked to /usr/bin/rclone${NC}"
+}
+
 # Function to install Applications (Without Snap support)
 
 install_firefox(){
@@ -246,6 +273,14 @@ if [ "$install_anydesk_choice" == "yes" ]; then
     install_anydesk
 else
     echo -e "${UFO_Green}Skipping AnyDesk installation.${NC}"
+fi
+
+echo -e "${UFO_Green}Do you want to install rclone? (yes/no)${NC}"
+read install_rclone_choice
+if [ "$install_rclone_choice" == "yes" ]; then
+    install_rclone
+else
+    echo -e "${UFO_Green}Skipping rclone installation.${NC}"
 fi
 
 # Snap removal if running on Ubuntu 24.04 and 24.10
