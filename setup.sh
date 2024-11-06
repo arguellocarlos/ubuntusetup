@@ -68,7 +68,7 @@ install_chrome() {
 }
 
 # Function to install Kisak Mesa Fresh
-install_kisakmesa(){
+install_kisakmesa() {
     echo -e "${UFO_Green}Installing Kisak Mesa Fresh PPA...${NC}"
     sudo add-apt-repository ppa:kisak/kisak-mesa -y
     sudo apt update -y
@@ -76,7 +76,7 @@ install_kisakmesa(){
 }
 
 # Function to install OBS Studio
-install_obstudio(){
+install_obstudio() {
     echo -e "${UFO_Green}Installing OBS Studio...${NC}"
     sudo add-apt-repository ppa:obsproject/obs-studio -y
     sudo apt update -y
@@ -114,7 +114,7 @@ remove_snaps() {
 }
 
 # Function to install Parsec
-install_parsec(){
+install_parsec() {
     echo -e "${UFO_Green}Installing Parsec...${NC}"
     wget --show-progress https://builds.parsec.app/package/parsec-linux.deb
     sudo dpkg -i parsec-linux.deb
@@ -122,7 +122,7 @@ install_parsec(){
 }
 
 # Function to install AnyDesk
-install_anydesk(){
+install_anydesk() {
     echo -e "${UFO_Green}Installing AnyDesk...${NC}"
     wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | apt-key add -
     echo "deb http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk-stable.list
@@ -130,7 +130,7 @@ install_anydesk(){
     sudo apt install anydesk -y
 }
 
-install_rclone(){
+install_rclone() {
     sudo apt install p7zip-full unzip -y
     # Define the installation directory
     INSTALL_DIR="/opt/rclone"
@@ -159,7 +159,7 @@ install_rclone(){
 
 # Function to install Applications (Without Snap support)
 
-install_firefox(){
+install_firefox() {
     echo -e "${UFO_Green}Installing Firefox (Without Snap)...${NC}"
     sudo install -d -m 0755 /etc/apt/keyrings
     wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
@@ -177,15 +177,13 @@ Pin-Priority: -1" | sudo tee /etc/apt/preferences.d/mozilla
     sudo apt install firefox -y
 }
 
-install_firefox_standalone(){
+install_firefox_standalone() {
     # Define the installation directory
     INSTALL_DIR="/opt/"
     # Download the latest Firefox release
     curl -O https://ftp.mozilla.org/pub/firefox/releases/132.0.1/linux-x86_64/en-US/firefox-132.0.1.tar.bz2 # Firefox 132.0.1 as of 11/06/2024
     # Unzip the downloaded file
     tar xjf firefox-*.tar.bz2
-    # Change to the unzipped directory
-    cd firefox-*
     # Move the firefox folder content to the installation directory
     sudo mv firefox* $INSTALL_DIR
     # Set the appropriate permissions
@@ -196,16 +194,17 @@ install_firefox_standalone(){
     rm -rf firefox-* firefox-132.0.1.tar.bz2
     # Create a symbolic link to make Firefox accessible from anywhere
     sudo ln -s $INSTALL_DIR/firefox /usr/bin/firefox
+    wget https://raw.githubusercontent.com/arguellocarlos/ubuntusetup/refs/heads/main/firefox-stable.desktop -P /usr/local/share/applications
 }
 
-install_libreoffice(){
+install_libreoffice() {
     echo -e "${UFO_Green}Installing LibreOffice (Flathub)${NC}"
     sudo apt install flatpak -y
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
     flatpak install flathub org.libreoffice.LibreOffice -y
 }
 
-install_thunderbird(){
+install_thunderbird() {
     echo -e "${UFO_Green}Installing Thunderbird (Flathub)${NC}"
     sudo apt install flatpak -y
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -320,6 +319,15 @@ echo -e "${UFO_Green}Do you want to install Firefox? (yes/no)${NC}"
 read install_firefox_choice
 if [ "$install_firefox_choice" == "yes" ]; then
     install_firefox
+else
+    echo -e "${UFO_Green}Skipping Firefox installation.${NC}"
+fi
+
+# Firefox standalone installation
+echo -e "${UFO_Green}Do you want to install Firefox standalone? (yes/no)${NC}"
+read install_firefox_standalone_choice
+if [ "$install_firefox_standalone_choice" == "yes" ]; then
+    install_firefox_standalone
 else
     echo -e "${UFO_Green}Skipping Firefox installation.${NC}"
 fi
