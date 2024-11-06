@@ -22,19 +22,28 @@ perform_system_performance_change() {
     sudo ./systemperfchange.sh
 }
 
+# Function to install the Nvidia Driver 550 (Static)
+perform_install_nvidia_driver() {
+    echo "Installing the Nvidia Driver..."
+    chmod a+x nvidia-driver-install.sh
+    sudo ./nvidia-driver-install.sh
+}
+
 # Main menu
 main_menu() {
     while true; do
         echo "Please choose an option:"
-        echo "1. Install Applications"
-        echo "2. Perform System Performance Changes"
-        echo "3. Exit"
+        echo "1. Install Applications..."
+        echo "2. Perform System Performance Changes..."
+        echo "3. Install Nvidia Driver..."
+        echo "4. Exit..."
         read -p "Enter your choice [1-3]: " choice
 
         case $choice in
             1) install_applications ;;
             2) perform_system_performance_change ;;
-            3) echo "Exiting..."; exit 0 ;;
+            3) perform_install_nvidia_driver ;;
+            4) echo "Exiting..."; exit 0 ;;
             *) echo "Invalid option. Please try again." ;;
         esac
     done
