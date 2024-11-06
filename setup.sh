@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # Define global color variables
-GREEN='\033[0;38;5;70m'
+UFO_Green='\033[0;38;5;78m' # UFO Green https://www.colorxs.com/color/hex-33da7a
 NC='\033[0m' # No Color
 
 # Function to install Bitwarden
 install_bitwarden() {
-    echo -e "${GREEN}Installing the latest Bitwarden Desktop version...${NC}"
+    echo -e "${UFO_Green}Installing the latest Bitwarden Desktop version...${NC}"
 #    latest_release=$(curl -s https://api.github.com/repos/bitwarden/clients/releases/latest | grep browser_download_url | grep amd64.deb | cut -d '"' -f 4)
 #    wget -O bitwarden-latest-amd64.deb $latest_release
 #    sudo apt install ./bitwarden-latest-amd64.deb
@@ -19,7 +19,7 @@ install_bitwarden() {
 
 # Function to install Brave browser
 install_brave() {
-    echo "Installing Brave browser..."
+    echo -e "${UFO_Green}Installing Brave browser...${NC}"
     sudo apt install curl -y
     sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
     echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
@@ -55,7 +55,7 @@ install_chrome() {
 
 # Function to install Kisak Mesa Fresh
 install_kisakmesa(){
-    echo "Installing Kisak Mesa Fresh PPA..."
+    echo "${UFO_Green}Installing Kisak Mesa Fresh PPA...${NC}"
     sudo add-apt-repository ppa:kisak/kisak-mesa -y
     sudo apt update -y
     sudo apt upgrade -y
