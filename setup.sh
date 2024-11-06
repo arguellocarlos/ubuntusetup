@@ -216,7 +216,7 @@ else
     echo -e "${UFO_Green}Skipping Google Chrome installation.${NC}"
 fi
 
-echo -e "${UFO_Green} Do you want to install Kisak Mesa Fresh PPA? (yes/no)${NC}"
+echo -e "${UFO_Green}Do you want to install Kisak Mesa Fresh PPA? (yes/no)${NC}"
 read install_kisakmesa_choice
 if [ "$install_kisakmesa_choice" == "yes" ]; then
     install_kisakmesa
