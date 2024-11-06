@@ -37,14 +37,14 @@ main_menu() {
         echo "2. Perform System Performance Changes..."
         echo "3. Install Nvidia Driver..."
         echo "4. Exit..."
-        read -p "Enter your choice [1-3]: " choice
+        read -p "Enter your choice [1-4]: " choice
 
         case $choice in
             1) install_applications ;;
             2) perform_system_performance_change ;;
             3) perform_install_nvidia_driver ;;
             4) echo "Exiting..."; exit 0 ;;
-            *) echo "Invalid option. Please try again." ;;
+            *) echo "Invalid option. Please try again..." ;;
         esac
     done
 }
