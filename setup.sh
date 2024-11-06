@@ -1,8 +1,12 @@
 #!/bin/bash
 
+# Define global color variables
+GREEN='\033[0;38;5;70m'
+NC='\033[0m' # No Color
+
 # Function to install Bitwarden
 install_bitwarden() {
-#    echo "Installing the latest Bitwarden Desktop version..."
+    echo -e "${GREEN}Installing the latest Bitwarden Desktop version...${NC}"
 #    latest_release=$(curl -s https://api.github.com/repos/bitwarden/clients/releases/latest | grep browser_download_url | grep amd64.deb | cut -d '"' -f 4)
 #    wget -O bitwarden-latest-amd64.deb $latest_release
 #    sudo apt install ./bitwarden-latest-amd64.deb
