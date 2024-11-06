@@ -177,6 +177,27 @@ Pin-Priority: -1" | sudo tee /etc/apt/preferences.d/mozilla
     sudo apt install firefox -y
 }
 
+install_firefox_standalone(){
+    # Define the installation directory
+    INSTALL_DIR="/opt/"
+    # Download the latest Firefox release
+    curl -O https://ftp.mozilla.org/pub/firefox/releases/132.0.1/linux-x86_64/en-US/firefox-132.0.1.tar.bz2 # Firefox 132.0.1 as of 11/06/2024
+    # Unzip the downloaded file
+    tar xjf firefox-*.tar.bz2
+    # Change to the unzipped directory
+    cd firefox-*
+    # Move the firefox folder content to the installation directory
+    sudo mv firefox* $INSTALL_DIR
+    # Set the appropriate permissions
+    sudo chown root:root $INSTALL_DIR/firefox
+    sudo chmod 755 $INSTALL_DIR/firefox
+    # Clean up the downloaded and unzipped files
+    cd ..
+    rm -rf firefox-* firefox-132.0.1.tar.bz2
+    # Create a symbolic link to make Firefox accessible from anywhere
+    sudo ln -s $INSTALL_DIR/firefox /usr/bin/firefox
+}
+
 install_libreoffice(){
     echo -e "${UFO_Green}Installing LibreOffice (Flathub)${NC}"
     sudo apt install flatpak -y
