@@ -1,0 +1,15 @@
+#------------------------------------------------------------------------------#
+#                            UBUNTU 24.04 SOURCES LIST                         #
+#------------------------------------------------------------------------------#
+
+###### Ubuntu Main Repos
+deb http://us.archive.ubuntu.com/ubuntu/ noble main restricted universe multiverse 
+deb-src http://us.archive.ubuntu.com/ubuntu/ noble main restricted universe multiverse 
+
+###### Ubuntu Update Repos
+deb http://us.archive.ubuntu.com/ubuntu/ noble-security main restricted universe multiverse 
+deb http://us.archive.ubuntu.com/ubuntu/ noble-updates main restricted universe multiverse 
+deb http://us.archive.ubuntu.com/ubuntu/ noble-backports main restricted universe multiverse 
+deb-src http://us.archive.ubuntu.com/ubuntu/ noble-security main restricted universe multiverse 
+deb-src http://us.archive.ubuntu.com/ubuntu/ noble-updates main restricted universe multiverse 
+deb-src http://us.archive.ubuntu.com/ubuntu/ noble-backports main restricted universe multiverse 
