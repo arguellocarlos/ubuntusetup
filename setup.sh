@@ -194,7 +194,8 @@ Pin-Priority: -1" | sudo tee /etc/apt/preferences.d/mozilla
 
 install_firefox_standalone() {
     # Download the latest Firefox release
-    curl -O https://ftp.mozilla.org/pub/firefox/releases/132.0.1/linux-x86_64/en-US/firefox-132.0.1.tar.bz2 # Firefox 132.0.1 as of 11/06/2024
+    # curl -o https://ftp.mozilla.org/pub/firefox/releases/132.0.2/linux-x86_64/en-US/firefox-132.0.2.deb
+    curl -O https://ftp.mozilla.org/pub/firefox/releases/132.0.2/linux-x86_64/en-US/firefox-132.0.2.tar.bz2 # Firefox 132.0.2 as of 11/12/2024
     # Unzip the downloaded file
     sudo apt install --reinstall bzip2 -y
     tar -xjf firefox-132.0.1.tar.bz2
