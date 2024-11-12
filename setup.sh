@@ -80,7 +80,7 @@ install_kisakmesa() {
     echo -e "${UFO_Green}Installing Kisak Mesa Fresh PPA...${NC}"
     sudo add-apt-repository ppa:kisak/kisak-mesa -y
     sudo apt update -y
-    sudo apt upgrade -y && sudo apt full upgrade -y
+    sudo apt upgrade -y && sudo apt full-upgrade -y
 }
 
 # Function to install OBS Studio
