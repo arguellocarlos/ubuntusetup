@@ -56,6 +56,12 @@ install_docker() {
     sudo apt update -y
     sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
     sudo systemctl enable docker && sudo systemctl enable containerd.service
+
+    echo -e "${UFO_Green}Setting up Docker...${NC}"
+    sudo groupadd docker && sudo usermod -aG docker $USER && newgrp docker
+    sudo systemctl enable docker.service
+    sudo systemctl enable containerd.service
+    docker ps
     
     echo -e "${UFO_Green}Installing Docker Compose...${NC}"
     curl -SL https://github.com/docker/compose/releases/download/v2.30.3/docker-compose-linux-x86_64 -o docker-compose
@@ -64,6 +70,7 @@ install_docker() {
     
     echo -e "${UFO_Green}Checking Docker Compose Version...${NC}"
     docker compose version
+    echo -e "${UFO_Green}Docker and Docker Compose have been installed...${NC}"
 }
 
 # Function to install Google Chrome
