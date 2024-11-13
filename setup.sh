@@ -136,6 +136,13 @@ install_parsec() {
     sudo apt install -f
 }
 
+install_peazip() {
+    echo -e "${UFO_Green}Installing PeaZip...${NC}"
+    wget --show-progress https://github.com/peazip/PeaZip/releases/download/10.1.0/peazip_10.1.0.LINUX.GTK2-1_amd64.deb
+    sudo dpkg -i peazip_10.1.0.LINUX.GTK2-1_amd64.deb
+    sudo apt install -f
+}
+
 # Function to install AnyDesk
 install_anydesk() {
     echo -e "${UFO_Green}Installing AnyDesk...${NC}"
@@ -300,6 +307,14 @@ if [ "$install_parsec_choice" == "yes" ]; then
     install_parsec
 else
     echo -e "${UFO_Green}Skipping Parsec installation.${NC}"
+fi
+
+echo -e "${UFO_Green}Do you want to install PeaZip? (yes/no)${NC}"
+read install_peazip_choice
+if [ "$install_peazip_choice" == "yes" ]; then
+    install_peazip
+else
+    echo -e "${UFO_Green}Skipping PeaZip installation.${NC}"
 fi
 
 echo -e "${UFO_Green}Do you want to install AnyDesk? (yes/no)${NC}"
