@@ -141,6 +141,7 @@ install_peazip() {
     wget --show-progress https://github.com/peazip/PeaZip/releases/download/10.1.0/peazip_10.1.0.LINUX.GTK2-1_amd64.deb
     sudo dpkg -i peazip_10.1.0.LINUX.GTK2-1_amd64.deb
     sudo apt install -f
+    # "\PeaZip\res\bin\7z\7z" x -aoa "-oC:\Path\to\archive\" -bb0 -bse0 -bsp2 -pdefault -sccUTF-8 -spf2 "\Path\to\archive\"
 }
 
 # Function to install AnyDesk
