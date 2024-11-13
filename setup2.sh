@@ -29,6 +29,12 @@ perform_install_nvidia_driver() {
     sudo ./nvidia-driver-install.sh
 }
 
+perform_radeon7000_fan_curve() {
+    echo "Adjusting GPU Fan Curve..."
+    chmod a+x fan_curve.sh
+    sudo ./fan_curve.sh
+}
+
 # Main menu
 main_menu() {
     while true; do
@@ -36,14 +42,16 @@ main_menu() {
         echo "1. Install Applications..."
         echo "2. Perform System Performance Changes..."
         echo "3. Install Nvidia Driver..."
-        echo "4. Exit..."
-        read -p "Enter your choice [1-4]: " choice
+        echo "4. Perform Radeon 7000 GPU Fan Curve adjustment..."
+        echo "5. Exit..."
+        read -p "Enter your choice [1-5]: " choice
 
         case $choice in
             1) install_applications ;;
             2) perform_system_performance_change ;;
             3) perform_install_nvidia_driver ;;
-            4) echo "Exiting..."; exit 0 ;;
+            4) perform_radeon7000_fan_curve ;;
+            5) echo "Exiting..."; exit 0 ;;
             *) echo "Invalid option. Please try again..." ;;
         esac
     done
