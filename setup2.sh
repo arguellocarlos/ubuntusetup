@@ -8,7 +8,7 @@ display_ascii_art() {
 }
 
 # Function to install applications
-install_applications() {
+perform_application_installation() {
     echo "Run setup.sh (Install various applications)"
     chmod a+x setup.sh
     sudo ./setup.sh
@@ -35,6 +35,13 @@ perform_radeon7000_fan_curve() {
     sudo ./fan_curve.sh
 }
 
+perform_linux_firmware_installation() {
+    echo "Installing Linux Firmware..."
+    sudo apt update -y && sudo apt upgrade -y
+    sudo apt install --reinstall linux-firmware -y
+    sync
+}
+
 # Main menu
 main_menu() {
     while true; do
@@ -43,15 +50,17 @@ main_menu() {
         echo "2. Perform System Performance Changes..."
         echo "3. Install Nvidia Driver..."
         echo "4. Perform Radeon 7000 GPU Fan Curve adjustment..."
-        echo "5. Exit..."
-        read -p "Enter your choice [1-5]: " choice
+        echo "5. Perform Linux Firmware Installation..."
+        echo "6. Exit..."
+        read -p "Enter your choice [1-6]: " choice
 
         case $choice in
-            1) install_applications ;;
+            1) perform_application_installation ;;
             2) perform_system_performance_change ;;
             3) perform_install_nvidia_driver ;;
             4) perform_radeon7000_fan_curve ;;
-            5) echo "Exiting..."; exit 0 ;;
+            5) perform_linux_firmware_installation ;;
+            6) echo "Exiting..."; exit 0 ;;
             *) echo "Invalid option. Please try again..." ;;
         esac
     done
