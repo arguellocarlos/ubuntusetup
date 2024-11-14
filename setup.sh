@@ -58,7 +58,7 @@ install_docker() {
     sudo systemctl enable docker && sudo systemctl enable containerd.service
 
     echo -e "${UFO_Green}Setting up Docker...${NC}"
-    sudo groupadd docker && sudo usermod -aG docker $USER && newgrp docker
+    sudo usermod -aG docker $USER && newgrp docker
     sudo systemctl enable docker.service
     sudo systemctl enable containerd.service
     docker ps
@@ -206,7 +206,7 @@ install_firefox_standalone() {
     curl -O https://ftp.mozilla.org/pub/firefox/releases/132.0.2/linux-x86_64/en-US/firefox-132.0.2.tar.bz2 # Firefox 132.0.2 as of 11/12/2024
     # Unzip the downloaded file
     sudo apt install --reinstall bzip2 -y
-    tar -xjf firefox-132.0.1.tar.bz2
+    tar -xjf firefox-132.0.2.tar.bz2
     # Move the firefox folder content to the installation directory
     sudo mv firefox/ /opt/
     # Set the appropriate permissions
@@ -214,7 +214,7 @@ install_firefox_standalone() {
     sudo chmod 755 /opt/firefox
     # Clean up the downloaded and unzipped files
     cd ..
-    rm -rf firefox-132.0.1.tar.bz2
+    rm -rf firefox-132.0.2.tar.bz2
     # Create a symbolic link to make Firefox accessible from anywhere
     sudo ln -s /opt/firefox/firefox /usr/bin/firefox
     wget https://raw.githubusercontent.com/arguellocarlos/ubuntusetup/refs/heads/main/firefox-stable.desktop && sudo cp -r firefox-stable.desktop /usr/share/applications/
