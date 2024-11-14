@@ -1,0 +1,45 @@
+# https://en.wikipedia.org/wiki/NetBIOS#NetBIOS_name
+# https://en.wikipedia.org/wiki/LMHOSTS
+# https://learn.microsoft.com/en-us/troubleshoot/windows-server/active-directory/naming-conventions-for-computer-domain-site-ou
+# https://networkencyclopedia.com/netbios-name/
+#
+# DESKTOP-XXXXXXX (26 letters + 10 digits)
+# Check name with "nbtstat -n" command
+# List of NetBIOS compatible names for local domains
+#
+# Ubuntu Hosts/Virtual Machines for local domains
+ubuntu-1204@local-13500H
+ubuntu-1404@local-13500H
+ubuntu-1604@local-13500H
+ubuntu-1804@local-13500H
+ubuntu-2004@local-13500H
+ubuntu-2204@local-13500H
+ubuntu-2404@local-13500H
+vadmin1@ubuntu-1204
+vadmin1@ubuntu-1404
+vadmin1@ubuntu-1604
+vadmin1@ubuntu-1804
+vadmin1@ubuntu-2004
+vadmin1@ubuntu-2204
+vadmin1@ubuntu-2404
+ubuntu-1204@intel-13500H
+ubuntu-1404@intel-13500H
+ubuntu-1604@intel-13500H
+ubuntu-1804@intel-13500H
+ubuntu-2004@intel-13500H
+ubuntu-2204@intel-13500H
+ubuntu-2404@intel-13500H
+vuser1@ubuntu-1204
+vuser1@ubuntu-1404
+vuser1@ubuntu-1604
+vuser1@ubuntu-1804
+vuser1@ubuntu-2004
+vuser1@ubuntu-2204
+vuser1@ubuntu-2404
+# Windows Hosts/Virtual Machine for local domains
+w10admin@DESKTOP-
+w11admin@DESKTOP-
+w10user@DESKTOP-
+w11user@DESKTOP-
+w10virtual1@DESKTOP-
+w11virtual1@DESKTOP-
