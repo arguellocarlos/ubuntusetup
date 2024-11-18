@@ -5,6 +5,7 @@ import psutil
 import time
 import subprocess
 from usercreation import add_new_user
+from packageinstall import install_packages
 
 def check_ubuntu_version():
     version = platform.linux_distribution()[1]
@@ -40,8 +41,8 @@ def print_ascii_art():
 
 def menu():
     print("Menu:")
-    print("1. System Information")
-    print("2. Option 2")
+    print("1. Create User")
+    print("2. Install default Packages")
     print("3. Option 3")
     print("4. Option 4")
     print("5. Option 5")
@@ -54,6 +55,8 @@ def menu():
             add_new_user()
         else:
             print("Invalid choice.")
+    elif choice == "2":
+        install_packages()
     else:
         print("Invalid choice.")
 
