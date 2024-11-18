@@ -38,19 +38,9 @@ def print_ascii_art():
     """
     print(art)
 
-def add_new_user():
-    username = input("Enter the name of the new user: ")
-    subprocess.run(["sudo", "adduser", username])
-    subprocess.run(["sudo", "usermod", "-aG", "sudo", username])
-    home_dir = f"/home/{username}"
-    directories = ["Documents", "Pictures", "Videos", "Downloads", "Music", "Desktop"]
-    for directory in directories:
-        os.makedirs(os.path.join(home_dir, directory))
-    print(f"User {username} added with sudo permissions and home directories created.")
-
 def menu():
     print("Menu:")
-    print("1. System Configuration")
+    print("1. System Information")
     print("2. Option 2")
     print("3. Option 3")
     print("4. Option 4")
