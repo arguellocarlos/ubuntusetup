@@ -1,0 +1,107 @@
+---
+services:
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin-linuxserver
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+      - JELLYFIN_PublishedServerUrl=http://0.0.0.0 #optional
+      - DOCKER_MODS=linuxserver/mods:jellyfin-opencl-intel
+    volumes:
+      - /home/carlos/Docker/containers/jellyfin/config:/config
+    ports:
+      - 8096:8096
+      - 8920:8920 #optional
+      - 7359:7359/udp #optional
+      - 1900:1900/udp #optional
+    devices:
+      - /dev/dri:/dev/dri
+    restart: unless-stopped
+    logging:
+      driver: "gelf"
+      options:
+        gelf-address: "udp://0.0.0.0:12201"
+
+  wizarr:
+    container_name: wizarr
+    image: ghcr.io/wizarrrr/wizarr
+    ports:
+      - 5690:5690
+    volumes:
+      - /home/carlos/Docker/containers/wizarr/database:/data/database
+      - /home/carlos/Docker/containers/wizarr/steps:/data/wizard_steps
+    environment:
+      - PUID=1000 #Set UID
+      - PGID=1000 #Set GID
+      - DISABLE_BUILTIN_AUTH=false #Set to true ONLY if you are using another auth provider (Authelia, Authentik, etc)
+      - TZ=America/Chicago #Set your timezone here
+    restart: unless-stopped
+    logging:
+      driver: "gelf"
+      options:
+        gelf-address: "udp://0.0.0.0:12201"
+
+  fusion:
+    image: ghcr.io/0x2e/fusion:latest
+    container_name: fusion-rss
+    ports:
+      - "8082:8080"
+    environment:
+      - PASSWORD=[REDACTED]
+    restart: "unless-stopped"
+    volumes:
+      # Change `./data` to where you want the files stored
+      - /home/carlos/Docker/containers/fusion-rss/data:/data
+    logging:
+      driver: "gelf"
+      options:
+        gelf-address: "udp://0.0.0.0:12201"
+
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+    volumes:
+      - /home/carlos/Docker/containers/sonarr/config:/config
+      - /home/carlos/Docker/sonarr/data:/tv/ #optional
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+    logging:
+      driver: "gelf"
+      options:
+        gelf-address: "udp://0.0.0.0:12201"
+
+  firefox:
+    image: jlesage/firefox
+    container_name: firefox
+    environment:
+      - TZ=America/Chicago
+      - KEEP_APP_RUNNING=1
+      - WEB_AUDIO=1
+      - WEB_LISTENING_PORT=5800
+    ports:
+      - 5800:5800
+      - 5900:5900
+    volumes:
+      - "/home/carlos/Docker/containers/firefox/config/:/config:rw"
+    restart: unless-stopped
+    logging:
+      driver: "gelf"
+      options:
+        gelf-address: "udp://0.0.0.0:12201"
+
+  cloudflared:
+    container_name: cloudflared-tunnel
+    image: cloudflare/cloudflared:latest
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run --token [REDACTED]
+    logging:
+      driver: "gelf"
+      options:
+        gelf-address: "udp://0.0.0.0:12201"
