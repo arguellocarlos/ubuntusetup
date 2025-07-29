@@ -27,8 +27,8 @@ install_bitwarden() {
 #    sudo apt install -f
 #    rm bitwarden-latest-amd64.deb
     sudo apt install flatpak -y
-    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-    flatpak install flathub com.bitwarden.desktop -y
+    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo --user
+    flatpak install flathub com.bitwarden.desktop -y --user
 }
 
 # Function to install Brave browser
