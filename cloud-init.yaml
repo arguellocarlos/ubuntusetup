@@ -1,13 +1,9 @@
 network:
   version: 2
   ethernets:
+    enx207bd2d130f7:
+      dhcp4: true
     enp2s0:
       addresses:
-      - "192.168.2.0/24"
-      mtu: 9014
-    enx6c1ff71df31e:
-      dhcp4: true
-    enx6c1ff71ea6e3:
-      addresses:
-      - "192.168.3.0/24"
+      - "192.168.3.55/24"
       mtu: 9014

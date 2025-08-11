@@ -7,7 +7,7 @@
 # Check name with "nbtstat -n" command
 # List of NetBIOS compatible names for local domains
 #
-# Ubuntu Hosts/Virtual Machines for local domains
+# Ubuntu Hosts for local domains
 ubuntu-1204@local-13500H
 ubuntu-1404@local-13500H
 ubuntu-1604@local-13500H
@@ -36,7 +36,7 @@ vuser1@ubuntu-1804
 vuser1@ubuntu-2004
 vuser1@ubuntu-2204
 vuser1@ubuntu-2404
-# Windows Hosts/Virtual Machine for local domains
+# Windows Hosts for local domains
 w10admin@DESKTOP-
 w11admin@DESKTOP-
 w10user@DESKTOP-
