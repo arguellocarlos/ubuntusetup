@@ -1,0 +1,41 @@
+services:
+  intel-llm:
+    image: docker.io/intelanalytics/ipex-llm-inference-cpp-xpu:latest
+    container_name: intel-llm
+    restart: always
+    networks:
+      - ml_shared
+    devices:
+      - /dev/dri:/dev/dri
+    volumes:
+      - models:/root/.ollama/models
+    environment:
+      - no_proxy=localhost,127.0.0.1
+      - OLLAMA_HOST=0.0.0.0
+      - DEVICE=Arc
+      - HOSTNAME=intel-llm
+      - OLLAMA_NUM_GPU=999
+      - ZES_ENABLE_SYSMAN=1
+    command: >
+      sh -c "mkdir -p /llm/ollama && cd /llm/ollama && init-ollama && exec ./ollama serve"
+
+  openwebui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: openwebui
+    restart: always
+    networks:
+      - ml_shared
+    ports:
+      - "8080:8080"
+    volumes:
+      - open-webui:/app/backend/data
+    environment:
+      - OLLAMA_BASE_URL=http://intel-llm:11434
+
+volumes:
+  models:
+  open-webui:
+
+networks:
+  ml_shared:
+    external: true

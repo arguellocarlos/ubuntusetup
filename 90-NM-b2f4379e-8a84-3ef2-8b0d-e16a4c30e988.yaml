@@ -1,0 +1,21 @@
+network:
+  version: 2
+  ethernets:
+    NM-b2f4379e-8a84-3ef2-8b0d-e16a4c30e988:
+      renderer: NetworkManager
+      match:
+        name: "enx34c8d6b10cf2"
+        macaddress: "34:C8:D6:B1:0C:F2"
+      addresses:
+      - "192.168.X.XX/24" # Change accordingly
+      mtu: 9014
+      wakeonlan: true
+      networkmanager:
+        uuid: "b2f4379e-8a84-3ef2-8b0d-e16a4c30e988"
+        name: "WisdPi"
+        passthrough:
+          connection.autoconnect-priority: "-999"
+          ipv6.addr-gen-mode: "default"
+          ipv6.method: "disabled"
+          ipv6.ip6-privacy: "-1"
+          proxy._: ""
