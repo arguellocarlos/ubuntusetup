@@ -59,3 +59,44 @@ Source: Conversation with Copilot, 10/29/2024
 [(7) https://releases.pagure.org/libosinfo/osinfo-db-.](https://releases.pagure.org/libosinfo/osinfo-db-.)
 
 [(8) https://wiki.almalinux.org/cloud/Generic-cloud.html.](https://wiki.almalinux.org/cloud/Generic-cloud.html.)
+
+The kernel parameter libata.force=noncq disables Native Command Queuing (NCQ) for SATA devices managed by the libata subsystem. Here's what that means and why you might use it:
+
+Native Command Queuing is a feature in SATA drives that allows them to reorder read/write commands for better performance—especially in multi-threaded workloads.
+
+* 🧠 Think of it like a smart to-do list for your hard drive.
+* 📈 It can boost throughput and reduce latency in some cases.
+
+# What libata.force=noncq Does
+
+Disables NCQ for all SATA devices.
+
+Forces the kernel to treat the drive as if it doesn’t support command queuing.
+
+Applies early in the boot process via the kernel command line (e.g., in GRUB).
+
+# When to Use It
+
+## ✅ Good Reasons:
+
+You're experiencing I/O errors, freezes, or timeouts with certain SSDs or HDDs.
+
+Your drive or controller has buggy NCQ support.
+
+You're troubleshooting disk performance issues.
+
+## ❌ Not Ideal If:
+
+Your drive benefits from NCQ (e.g., in high-throughput workloads).
+
+You're using modern SSDs with good NCQ support.
+
+# 🛠️ How to Apply It
+
+```sudo nano /etc/default/grub```
+
+Add to the ```GRUB_CMDLINE_LINUX_DEFAULT``` line:
+
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash ```libata.force=noncq"```
+
+Source: Conversation with Copilot, 08/16/2025
