@@ -60,6 +60,8 @@ Source: Conversation with Copilot, 10/29/2024
 
 [(8) https://wiki.almalinux.org/cloud/Generic-cloud.html.](https://wiki.almalinux.org/cloud/Generic-cloud.html.)
 
+***
+
 The kernel parameter libata.force=noncq disables Native Command Queuing (NCQ) for SATA devices managed by the libata subsystem. Here's what that means and why you might use it:
 
 Native Command Queuing is a feature in SATA drives that allows them to reorder read/write commands for better performance—especially in multi-threaded workloads.
